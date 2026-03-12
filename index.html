@@ -1,0 +1,524 @@
+
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta
+ name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Supriya Tours & Travels</title>
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI', Arial, sans-serif;
+}
+
+/* ===== LIGHT THEME ===== */
+body{
+  background:#e3f2fd;
+  color:#1a1a1a;
+}
+
+/* ===== HEADER ===== */
+header{
+  background:#ffe4ec;
+  color:#0d47a1;
+  padding:25px 15px;
+  text-align:center;
+  box-shadow:0 3px 10px rgba(0,0,0,0.08);
+}
+header h1{font-size:32px;}
+header p{opacity:0.8;margin-top:6px;}
+
+/* ===== NAVBAR ===== */
+nav{
+  background:#ffe4ec;
+  padding:14px;
+  text-align:center;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+nav a{
+  color:#1a1a1a;
+  margin:15px;
+  text-decoration:none;
+  font-weight:600;
+  font-size:17px;
+}
+nav a:hover{ color:#1565c0; }
+
+.hero{
+position:relative;
+padding:160px 20px;
+text-align:center;
+color:#222222;
+overflow:hidden;
+background:#d0ebff;
+}
+
+/* Soft white overlay */
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(173,216,230,0.6);
+  z-index:-1;
+}
+
+.hero h2{
+  font-size:42px;
+  margin-bottom:25px;
+  color:#0d47a1;
+}
+
+/* ===== SEARCH BOX ===== */
+.search-box{
+  background:#e3f2fd;
+  padding:20px;
+  border-radius:12px;
+  display:inline-block;
+  box-shadow:0 6px 18px rgba(0,0,0,0.12);
+}
+.search-box input{
+  padding:10px;
+  margin:5px;
+  border:1px solid #cfd8dc;
+  border-radius:6px;
+}
+
+/* ===== BUTTONS ===== */
+button{
+  background:linear-gradient(90deg,#1976d2,#42a5f5);
+  color:white;
+  border:none;
+  padding:10px 20px;
+  border-radius:6px;
+  cursor:pointer;
+  font-weight:bold;
+}
+button:hover{ opacity:0.9; }
+
+/* ===== SECTIONS ===== */
+.section{
+  padding:70px 20px;
+  text-align:center;
+}
+.section h2{
+  margin-bottom:40px;
+  font-size:32px;
+  color:#0d47a1;
+}
+
+/* ===== CARDS ===== */
+.cards{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:30px;
+}
+.card{
+  background:#ffffff;
+  width:270px;
+  border-radius:14px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.12);
+  overflow:hidden;
+  transition:0.3s;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.card:hover{ transform:translateY(-6px); }
+.card img{width:100%;height:170px;object-fit:cover;}
+.card-content{padding:15px;}
+.card h3{margin-bottom:6px;color:#0d47a1;}
+.card p{color:#444;margin:4px 0;}
+.card button{margin:15px;}
+
+/* ===== ABOUT ===== */
+.about{
+  max-width:900px;
+  margin:auto;
+  line-height:1.8;
+  font-size:17px;
+  color:#333;
+}
+
+/* ===== GALLERY ===== */
+.gallery{
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  justify-content:center;
+}
+.gallery img{
+  width:300px;
+  border-radius:12px;
+  transition:0.3s;
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
+}
+.gallery img:hover{ transform:scale(1.05); }
+
+/* ===== CONTACT ===== */
+.contact-form{
+  max-width:420px;
+  margin:auto;
+}
+.contact-form input,
+.contact-form textarea{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border:1px solid #cfd8dc;
+  border-radius:6px;
+}
+
+/* ===== FOOTER ===== */
+footer{
+  background:#e3f2fd;
+  color:#0d47a1;
+  text-align:center;
+  padding:20px;
+  margin-top:40px;
+}
+
+/* ===== MODAL ===== */
+.modal{
+  display:none;
+  position:fixed;
+  z-index:2000;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.5);
+}
+.modal-content{
+  background:white;
+  width:90%;
+  max-width:400px;
+  margin:8% auto;
+  padding:25px;
+  border-radius:12px;
+  text-align:left;
+  position:relative;
+}
+.close{
+  position:absolute;
+  right:15px;
+  top:10px;
+  font-size:22px;
+  cursor:pointer;
+}
+.modal-content input{
+  width:100%;
+  padding:10px;
+  margin:10px 0;
+  border:1px solid #cfd8dc;
+  border-radius:6px;
+}
+<style>
+
+/* Travel collage background */
+/* Background video */
+.hero video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-2;
+}
+
+/* Dark overlay */
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.45);
+  z-index:-1;
+}
+.hero video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1;}
+.hero-overlay{background:rgba(0,0,0,0.45);position:absolute;inset:0;z-index:-1;}
+.hero-content{z-index:1;padding:20px;}
+.hero h2{font-size:42px;margin-bottom:25px;text-shadow:0 3px 8px rgba(0,0,0,0.4);} 
+
+.search-box{background:rgba(255,255,255,0.95);padding:20px;border-radius:12px;display:inline-block;box-shadow:0 4px 15px rgba(0,0,0,0.2);} 
+.search-box input{padding:10px;margin:5px;border:1px solid #ccc;border-radius:6px;}
+
+button{background:linear-gradient(90deg,#6a1b9a,#ab47bc);color:white;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;font-weight:bold;}
+button:hover{ opacity:0.9; }
+
+.section{padding:70px 20px;text-align:center;}
+.section h2{margin-bottom:40px;font-size:32px;color:#4a148c;}
+
+.cards{display:flex;flex-wrap:wrap;justify-content:center;gap:30px;}
+
+.card{background:white;width:270px;border-radius:14px;box-shadow:0 6px 18px rgba(0,0,0,0.12);overflow:hidden;transition:0.3s;display:flex;flex-direction:column;justify-content:space-between;}
+.card:hover{ transform:translateY(-6px); }
+.card img{width:100%;height:170px;object-fit:cover;}
+.card-content{padding:15px;}
+.card h3{ margin-bottom:6px; } .card p{ color:#555; margin:4px 0; }
+.card button{ margin:15px; }
+
+.about{max-width:900px;margin:auto;line-height:1.8;font-size:17px;color:#333;}
+
+.gallery{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;}
+.gallery img{width:300px;border-radius:12px;transition:0.3s;box-shadow:0 4px 12px rgba(0,0,0,0.15);} 
+.gallery img:hover{ transform:scale(1.05); }
+
+.contact-form{max-width:420px;margin:auto;}
+.contact-form input,.contact-form textarea{width:100%;padding:12px;margin:10px 0;border:1px solid #ccc;border-radius:6px;}
+
+footer{background:#6a1b9a;color:white;text-align:center;padding:20px;margin-top:40px;}
+
+/* BOOKING MODAL */
+.modal{display:none;position:fixed;z-index:2000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.6);} 
+.modal-content{background:white;width:90%;max-width:400px;margin:8% auto;padding:25px;border-radius:12px;text-align:left;position:relative;}
+.close{position:absolute;right:15px;top:10px;font-size:22px;cursor:pointer;}
+.modal-content input{width:100%;padding:10px;margin:10px 0;border:1px solid #ccc;border-radius:6px;}
+</style></head><body><header>
+  <h1>Supriya Tours & Travels</h1>
+  <p>Your Journey Begins Here</p>
+</header><nav>
+  <a href="#home">Home</a>
+  <a href="#buses">Bus Services</a>
+  <a href="#cars">Car Rentals</a>
+  <a href="#nagpur">Nagpur Routes</a>
+  <a href="#about">About Us</a>
+  <a href="#destinations">Destinations</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#contact">Contact</a>
+</nav><!-- HERO WITH VIDEO BACKGROUND --><div class="hero" id="home">
+  <video autoplay muted loop playsinline>
+    <source src="https://cdn.coverr.co/videos/coverr-aerial-view-of-a-road-in-the-mountains-1573/1080p.mp4" type="video/mp4">
+  </video>
+  <video autoplay muted loop playsinline>
+    <source src="https://cdn.coverr.co/videos/coverr-aerial-view-of-a-road-in-the-mountains-1573/1080p.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h2>Book Bus & Car Tickets Online</h2>
+    <div class="search-box">
+    <input type="text" id="fromInput" placeholder="From">
+    <input type="text" id="toInput" placeholder="To">
+    <input type="date" id="dateInput">
+    <button onclick="searchRoute()">Search</button>
+  </div>
+  <script>
+function runSearch(){
+  const from = document.querySelector('input[placeholder="From"]').value.trim().toLowerCase();
+  const to = document.querySelector('input[placeholder="To"]').value.trim().toLowerCase();
+  const date = document.querySelector('input[type="date"]').value;
+
+  if(!from || !to || !date){
+    alert('Please enter From, To and Date');
+    return;
+  }
+
+  const routeMap = {
+    'pune-nagpur': 'route-pune-nagpur',
+    'nagpur-pune': 'route-nagpur-pune',
+    'mumbai-nagpur': 'route-mumbai-nagpur',
+    'nagpur-mumbai': 'route-nagpur-mumbai'
+  };
+
+  const key = from + '-' + to;
+  const sectionId = routeMap[key];
+
+  if(sectionId && document.getElementById(sectionId)){
+    document.getElementById(sectionId).scrollIntoView({behavior:'smooth'});
+  } else {
+    alert('Route not available yet');
+  }
+}
+</script>
+</div><!-- BUS SERVICES --><div class="section" id="buses">
+  <h2>Bus Services</h2>
+  <div class="cards"><div class="card">
+  <img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e">
+  <div class="card-content">
+    <h3>Pune → Nagpur</h3>
+    <p>AC Sleeper Bus</p>
+    <p>₹899</p>
+  </div>
+  <button onclick="openForm('Pune to Nagpur Bus')">Book</button>
+</div>
+
+<div class="card">
+  <img src="https://images.unsplash.com/photo-1570125909517-53cb21c89ff2">
+  <div class="card-content">
+    <h3>Pune → Nashik</h3>
+    <p>Luxury Bus</p>
+    <p>₹599</p>
+  </div>
+  <button onclick="openForm('Pune to Nashik Bus')">Book</button>
+</div>
+
+<div class="card">
+  <img src="https://images.unsplash.com/photo-1494515843206-f3117d3f51b7">
+  <div class="card-content">
+    <h3>Mumbai → Goa</h3>
+    <p>AC Volvo</p>
+    <p>₹1,199</p>
+  </div>
+  <button onclick="openForm('Mumbai to Goa Bus')">Book</button>
+</div>
+
+  </div>
+</div><!-- CAR RENTALS --><div class="section" id="cars">
+  <h2>Car Rentals</h2>
+  <div class="cards"><div class="card">
+  <img src="https://imgd.aeplcdn.com/664x374/n/cw/ec/140809/innova-crysta-exterior-right-front-three-quarter-3.png">
+  <div class="card-content">
+    <h3>Innova Crysta</h3>
+    <p>Luxury 7/8 Seater • Driver Included</p>
+  </div>
+  <button onclick="openForm('Innova Crysta Rental')">Book</button>
+</div>
+
+<div class="card">
+  <img src="https://images.unsplash.com/photo-1550355291-bbee04a92027">
+  <div class="card-content">
+    <h3>Sedan Car</h3>
+    <p>Comfort 4 Seater • City & Outstation</p>
+  </div>
+  <button onclick="openForm('Sedan Car Rental')">Book</button>
+</div>
+
+
+    
+
+  </div>
+</div><!-- MORE ROUTES FROM NAGPUR --><div class="section" id="nagpur">
+  <h2>Popular Routes from Nagpur</h2>
+  <div class="cards"><div class="card">
+  <img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e">
+  <div class="card-content">
+    <h3>Nagpur → Pune</h3>
+    <p>AC Sleeper</p>
+    <p>₹899</p>
+  </div>
+  <button onclick="openForm('Nagpur to Pune Bus')">Book</button>
+</div>
+
+<div class="card">
+  <img src="https://images.unsplash.com/photo-1570125909517-53cb21c89ff2">
+  <div class="card-content">
+    <h3>Nagpur → Mumbai</h3>
+    <p>Luxury Bus</p>
+    <p>₹999</p>
+  </div>
+  <button onclick="openForm('Nagpur to Mumbai Bus')">Book</button>
+</div>
+
+
+  </div>
+</div><!-- ABOUT --><div class="section" id="about">
+  <h2>About Us</h2>
+  <div class="about">
+    <p><b>Supriya Tours & Travels</b> is a trusted travel service providing safe, comfortable, and affordable journeys across Maharashtra and India.</p>
+    <br>
+    <p>
+      • Bus ticket booking
+      <br>• Private car rentals
+      <br>• Group tours & family trips
+      <br>• Corporate travel services
+    </p>
+    <br>
+    <p>Our mission is to make every journey smooth, enjoyable, and memorable with well-maintained vehicles and professional drivers.</p>
+  </div>
+</div><!-- DESTINATIONS --><div class="section" id="destinations">
+  <h2>Popular Destinations</h2>
+  <div class="cards">
+    <div class="card"><img src="https://images.unsplash.com/photo-1587922546307-776227941871"><div class="card-content"><h3>Goa</h3><p>Beach Paradise</p></div></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1561361058-c24cecae35ca"><div class="card-content"><h3>Varanasi</h3><p>Spiritual City</p></div></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23"><div class="card-content"><h3>Manali</h3><p>Snow Mountains</p></div></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1599661046289-e31897846e41"><div class="card-content"><h3>Jaipur</h3><p>The Pink City</p></div></div>
+  </div>
+</div><!-- GALLERY --><div class="section" id="gallery">
+  <h2>Travel Gallery</h2>
+  <div class="gallery">
+    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470">
+    <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1">
+    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+  </div>
+</div><!-- CONTACT --><div class="section" id="contact">
+  <h2>Contact Us</h2>
+  <div class="contact-form">
+    <input type="text" placeholder="Your Name">
+    <input type="email" placeholder="Your Email">
+    <textarea rows="4" placeholder="Message"></textarea>
+    <button>Send Message</button><div style="margin-top:25px;background:#f3e5f5;padding:15px;border-radius:10px">
+  <h3 style="color:#6a1b9a;margin-bottom:10px">Owner Contact Details</h3>
+  <p><b>Owner Name:</b> Supriya Mahesh Chaudhari</p>
+  <p><b>Contact Number:</b> 9175600547</p>
+</div>
+
+  </div>
+</div><footer>
+  <p>© 2026 Supriya Tours & Travels | All Rights Reserved</p>
+</footer><!-- BOOKING FORM MODAL --><div class="modal" id="bookingModal">
+  <div class="modal-content">
+    <span class="close" onclick="closeForm()">×</span>
+    <h3>Booking Form</h3>
+    <p id="serviceName" style="color:#6a1b9a;font-weight:bold"></p>
+    <input type="text" placeholder="Full Name">
+    <input type="tel" placeholder="Mobile Number">
+    <input id="dateInput" type="date">
+    <input type="text" placeholder="Pickup Location">
+    <button onclick="submitBooking(event)">Submit Booking</button>
+  </div>
+</div><script>
+function openForm(service){
+  document.getElementById('bookingModal').style.display='block';
+  document.getElementById('serviceName').innerText = service;
+}
+
+function closeForm(){
+  document.getElementById('bookingModal').style.display='none';
+}
+
+window.onclick = function(e){
+  const modal = document.getElementById('bookingModal');
+  if(e.target == modal){ modal.style.display='none'; }
+}
+
+function submitBooking(e){
+  e.preventDefault();
+  alert('Booking submitted successfully!');
+  closeForm();
+}
+
+function searchRoute(){
+  const from = document.getElementById('fromInput').value.trim().toLowerCase();
+  const to = document.getElementById('toInput').value.trim().toLowerCase();
+  const result = document.getElementById('searchResult');
+
+  if(!from || !to){
+    result.innerText = 'Please enter From and To locations';
+    result.style.color = 'yellow';
+    return;
+  }
+
+  const routes = [
+    {from:'pune', to:'nagpur', text:'Pune → Nagpur | AC Sleeper Bus | ₹899'},
+    {from:'pune', to:'nashik', text:'Pune → Nashik | Luxury Bus | ₹599'},
+    {from:'nagpur', to:'pune', text:'Nagpur → Pune | AC Sleeper Bus | ₹899'},
+    {from:'nagpur', to:'mumbai', text:'Nagpur → Mumbai | Luxury Bus | ₹999'},
+    {from:'nagpur', to:'hyderabad', text:'Nagpur → Hyderabad | AC Seater | ₹799'}
+  ];
+
+  const match = routes.find(r => r.from===from && r.to===to);
+
+  if(match){
+    result.innerText = 'Available: ' + match.text;
+    result.style.color = '#00ffcc';
+  }else{
+    result.innerText = 'No direct route found. Please contact support.';
+    result.style.color = 'orange';
+  }
+}
+</script></body>
+</html>
